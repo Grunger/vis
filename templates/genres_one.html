@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="jumbotron jumbotron-fluid mx-auto my-auto " style="width: 40rem;">
+    <div class=" container">
+
+        {{genres.photo}}
+        {% set file_name = 'images/' + genres.photo %}
+        <img src="{{ url_for('static', filename=file_name)}}" class="card-img-top" alt="...">
+
+        <p>{{genres.date}}</p>
+        <h1 class="display-4">{{ genres.title }}</h1>
+        <p class="lead">{% for line in genres.text %}
+        <p>{{line}}</p>
+    </div>
+</div>
+{% endfor %}
+
+<div class="card  my-5 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            {% if current_user.is_authenticated %}
+            <a href="{{url_for('add_music')}}">
+                <div class="center">
+                    <button type="button" class="btn btn-success">Добавить песню</button>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% for item in music %}
+<div class="card  w-50 my-5 mx-auto">
+    <div class="card-body">
+        <ul class="list-group  my-2 w-40 mx-auto">
+            <li class="list-group-item my-2 w-40 mx-auto"> {{item.song}}
+                {% set file_name = 'mp3/' + item.song %}
+                <audio controls>
+                    <source src="{{ url_for('static', filename=file_name)}}" type="audio/mp3">
+                    <source src="viper.mp3" type="audio/mp3">
+                    <p>Your browser doesn't support HTML5 audio. Here is a <a href="viper.mp3">link to the audio</a>
+                        instead.
+                    </p>
+                </audio>
+            </li>
+        </ul>
+        {% if item.user_id|string == current_user.get_id()%}
+        <a href="delete_music/{{ item.id }}" type="button" class="btn btn-danger">Удалить</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}

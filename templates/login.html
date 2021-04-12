@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 align="center">Авторизация</h1>
+<form action="" method="post" novalidate>
+    {% for cat, msg in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-light" role="alert">
+        {{msg}}
+    </div>
+    {% endfor %}
+    {{ form.hidden_tag() }}
+    <p align="center">
+        {{ form.login.label }}<br>
+        {{ form.login }}<br>
+        {% for error in form.login.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p align="center">
+        {{ form.password.label }}<br>
+        {{ form.password }}<br>
+        {% for error in form.password.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p align="center">{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

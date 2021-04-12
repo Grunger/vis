@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align="center">Добавьте новость</h1>
+<form action="" method="post" novalidate>
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="alert alert-danger" role="alert">
+        {{msg}}
+    </div>
+    {% endfor %}
+    {{ form.hidden_tag() }}
+    <p align="center">
+        Заголовок<br>
+        {{ form.title }}<br>
+        {% for error in form.title.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p align="center">
+        Содержание<br>
+        {{ form.text }}<br>
+        {% for error in form.text.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p align="center">
+        Дата<br>
+        {{ form.date }}<br>
+        {% for error in form.date.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p align="center">{{ form.submit() }}</p>
+</form>
+{% endblock %}

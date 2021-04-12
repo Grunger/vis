@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!---
+<head>
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        }
+        .center {
+            text-align: center;
+            padding: 350px;
+  }
+    </style>
+</head>
+--->
+<div class="card  my-5 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            {% if current_user.is_authenticated %}
+                <a href="{{url_for('add_news')}}">
+                    <div class="center">
+                        <button type="button" class="btn btn-success">Добавить новость</button>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+        <div class="card-header">
+            <form action="" method="post" novalidate>
+                {{form_search.hidden_tag()}}
+                {{ form_search.title }}
+                {{ form_search.title.label }}
+                {{ form_search.submit1() }}
+            </form>
+        </div>
+        <div class="card-header">
+            <form action="" method="post" novalidate>
+                {{form_filter.hidden_tag()}}
+                {{ form_filter.date_from.label }}
+                {{ form_filter.date_from }}
+                {{ form_filter.date_to.label }}
+                {{ form_filter.date_to }}<br>
+                <div class="overflow-scroll">
+                    {{ form_filter.author.label }}
+                    {{ form_filter.author }}<br>
+                </div>
+                <button type="button" class="btn btn-dark">{{ form_filter.submit2() }}</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% for item in news %}
+<div class="card w-75 my-5 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            {{ author1 }}
+        </div>
+
+        <div class="card-body">
+
+            {%if item.user_id|string == current_user.get_id()%}
+            {% endif %}
+
+            <a href="news/{{item.id}}">
+                <h1 class="card-title">{{ item.title }}</h1>
+            </a>
+            <p class="card-text">{% for line in item.text %}</p>
+            <p>{{line}}
+            {% endfor %}</p>
+            {% if item.user_id|string == current_user.get_id()%}
+            <a href="change_news/{{ item.id }}" type="button" class="btn btn-warning">Править</a>
+            <a href="delete_news/{{ item.id }}" type="button" class="btn btn-danger">Удалить</a>
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted">
+            {{item.date}}
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

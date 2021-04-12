@@ -1,0 +1,25 @@
+body {
+    background-image: linear-gradient(45deg, #000000, #5b5b5b, #ababab, #ffffff);
+
+    }
+
+
+.container {
+    background-image: linear-gradient(45deg, #000000, #5b5b5b, #ababab, #ffffff);
+    width: 450px;
+    height: 500px;
+    margin: 250px auto 0 auto;
+    text-align: center;
+}
+
+
+
+.register {
+    background-image: linear-gradient(45deg, #000000, #5b5b5b, #ababab, #ffffff);
+    border: 5px outset rgba(62, 59, 59, 0.87);
+    border-radius: 40px;
+
+}
+
+
+

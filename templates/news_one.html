@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <p>{{news.date}}</p>
+        <h1 class="display-4">{{ news.title }}</h1>
+        <p class="lead">{% for line in news.text %}
+        <p>{{line}}</p>
+
+
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

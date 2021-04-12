@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <style>
+    body {
+    background: #000;
+    color: #c0c0c0;
+    }
+    </style>
+
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+         <title>Page</title>
+    {% endif %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ url_for('index') }}">Main page</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('index') }}">Main <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('news') }}">News</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('information') }}">information</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{{ url_for('comments') }}" >comments</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>
+
+
+
+<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+<div class="btn-group mr-5" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-group-sm mr-4" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            Registr
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+
+            <a class="navbar-brand" href="{{ url_for('Log_in') }}" style=" color:#800000">Log in</a><Br>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation1">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <a class="navbar-brand" href="{{ url_for('Log_in') }}" style=" color:#800000">Enter</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation2">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+            <div class="btn-group mr-5" role="group">
+        <button class="btn btn-secondary dropdown-toggle mr-5"
+          type="button" id="dropdownMenu5" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+            Registr
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+            <a class="dropdown-item" href="{{ url_for('Log_in') }}" style=" color:#800000">Log in</a><Br>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ url_for('Log_in') }}" style=" color:#800000">Enter</a>
+        </div>
+     </div>
+
+
+
+
+<!-- Приветствие  -->
+<h1>Your welcome! </h1>
+
+<p>
+    <font size="5">
+        Do you like music?<br>
+        Then you come to us!
+    </font>
+</p>
